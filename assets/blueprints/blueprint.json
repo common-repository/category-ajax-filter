@@ -1,0 +1,34 @@
+{
+    "landingPage": "/wp-admin/edit.php?post_type=caf_posts",
+    "preferredVersions": {
+        "php": "8.0",
+        "wp": "latest"
+    },
+    "phpExtensionBundles": [
+        "kitchen-sink"
+    ],
+    "features": {
+        "networking": true
+    },
+    "steps": [
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "url",
+                "url": "https:\/\/downloads.wordpress.org\/plugin\/category-ajax-filter.2.8.zip"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        },
+        {
+            "step": "runPHP",
+            "code": "<?php require_once 'wordpress/wp-load.php'; wp_insert_post(array('post_title' => 'CAF Demo', 'post_status' => 'publish','post_type' => 'caf_posts')); wp_insert_post(array('post_title' => 'CAF Demo Page', 'post_status' => 'publish','post_type' => 'page','post_content'=>'[caf_filter id=4]'));update_post_meta(4, 'caf_cpt_value', 'post');update_post_meta(4, 'caf_taxonomy', 'category');update_post_meta(4, 'caf_terms', array('1'));update_post_meta(4, 'caf_filter_layout', 'filter-layout1');update_post_meta(4, 'caf_post_layout', 'post-layout1');update_post_meta(4, 'caf_filter_status', 'on');update_post_meta(4, 'caf_sec_bg_color', '#ffffff00');update_post_meta(4, 'caf_filter_primary_color', '#fff');update_post_meta(4, 'caf_filter_sec_color', '#262626');update_post_meta(4, 'caf_filter_sec_color2', '#fcb040');update_post_meta(4, 'caf_post_primary_color', '#262626');update_post_meta(4, 'caf_post_sec_color', '#fcb040');update_post_meta(4, 'caf_post_sec_color2', '#262626');update_post_meta(4, 'caf_per_page', '3');update_post_meta(4, 'caf_image_size', 'large');update_post_meta(4, 'caf_post_animation', 'animate-off');update_post_meta(4, 'caf_empty_res', 'No Result.');update_post_meta(4, 'caf_pagination_type', 'number');update_post_meta(4, 'caf_filter_font', 'inherit');update_post_meta(4, 'caf_filter_transform', 'capitalize');update_post_meta(4, 'caf_filter_font_size', '12');update_post_meta(4, 'caf_post_font', 'inherit');update_post_meta(4, 'caf_post_title_transform', 'capitalize');update_post_meta(4, 'caf_post_title_font_size', '12');?>"
+        }
+    ]
+}
